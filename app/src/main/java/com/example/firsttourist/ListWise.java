@@ -91,7 +91,6 @@ public class ListWise extends AppCompatActivity {
                 mTitle[i] = name.get(i);
                 mlocation[i]=location.get(i);
                 mDescription[i]=description.get(i);
-
                 mrating[i]  = Float.parseFloat(rating.get(i));
                 images_url[i]=url.get(i);
             }
@@ -108,6 +107,7 @@ public class ListWise extends AppCompatActivity {
                     intent.putExtra("Location",  mlocation[position]);
                     intent.putExtra("Description",  mDescription[position]);
                     intent.putExtra("Image", images_url[position]);
+                    intent.putExtra("rating",Float.toString(mrating[position]));
                     startActivity(intent);
 
 
@@ -156,7 +156,6 @@ public class ListWise extends AppCompatActivity {
                 mTitle[i] = name.get(i);
                 mlocation[i]=location.get(i);
                 mDescription[i]=description.get(i);
-
                 mrating[i]  = Float.parseFloat(rating.get(i));
                 images_url[i]=url.get(i);
             }
@@ -173,6 +172,7 @@ public class ListWise extends AppCompatActivity {
                     intent.putExtra("Location",  mlocation[position]);
                     intent.putExtra("Description",  mDescription[position]);
                     intent.putExtra("Image", images_url[position]);
+                    intent.putExtra("rating",Float.toString(mrating[position]));
                     startActivity(intent);
 
 
@@ -221,7 +221,6 @@ public class ListWise extends AppCompatActivity {
                 mTitle[i] = name.get(i);
                 mlocation[i]=location.get(i);
                 mDescription[i]=description.get(i);
-
                 mrating[i]  = Float.parseFloat(rating.get(i));
                 images_url[i]=url.get(i);
             }
@@ -238,6 +237,7 @@ public class ListWise extends AppCompatActivity {
                     intent.putExtra("Location",  mlocation[position]);
                     intent.putExtra("Description",  mDescription[position]);
                     intent.putExtra("Image", images_url[position]);
+                    intent.putExtra("rating",Float.toString(mrating[position]));
                     startActivity(intent);
 
 
@@ -266,7 +266,6 @@ public class ListWise extends AppCompatActivity {
                         description.add(obj.getString("description"));
                         location.add(obj.getString("location"));
                         rating.add(obj.getString("rating"));
-//                        Log.d("checkExplorate",obj.getString("location"));
                     }
                 }
             } catch (IOException e) {
@@ -302,6 +301,7 @@ public class ListWise extends AppCompatActivity {
                     intent.putExtra("Location",  mlocation[position]);
                     intent.putExtra("Description",  mDescription[position]);
                     intent.putExtra("Image", images_url[position]);
+                    intent.putExtra("rating",Float.toString(mrating[position]));
                     startActivity(intent);
 
 
@@ -366,6 +366,7 @@ public class ListWise extends AppCompatActivity {
                     intent.putExtra("Location",  mlocation[position]);
                     intent.putExtra("Description",  mDescription[position]);
                     intent.putExtra("Image", images_url[position]);
+                    intent.putExtra("Rating",Float.toString(mrating[position]));
                     startActivity(intent);
 
 
@@ -431,6 +432,7 @@ public class ListWise extends AppCompatActivity {
                     intent.putExtra("Location",  mlocation[position]);
                     intent.putExtra("Description",  mDescription[position]);
                     intent.putExtra("Image", images_url[position]);
+                    intent.putExtra("rating",Float.toString(mrating[position]));
                     startActivity(intent);
 
 
@@ -469,7 +471,6 @@ public class ListWise extends AppCompatActivity {
                     .load(rImgs[position])
                     .placeholder(R.drawable.ic_launcher_foreground)
                     .into(images);
-
             myTitle.setText(rTitle[position]);
             myDescription.setText(rLocation[position]);
             rb.setRating(ra[position]);
