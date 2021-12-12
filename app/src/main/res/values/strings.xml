@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">FirstTourist</string>
+    <string name="main_title">Main Title</string>
+    <string name="sub_title">Sub Title</string>
+    <string name="explorate">Explorate</string>
+    <string name="odisha">Odisha</string>
+    <string name="categories">Categories</string>
+    <string name="falls">FALLS</string>
+    <string name="temples">TEMPLES</string>
+    <string name="museums">Museums</string>
+    <string name="hill_stations">Hill Stations</string>
+    <string name="expand_all">Expand All</string>
+    <string name="beaches">Beaches</string>
+    <string name="wildlife_sanctuarys">Wildlife Sanctuarys</string>
+</resources>

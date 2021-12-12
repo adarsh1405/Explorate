@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/MAD/Explorate-master/app/src/main/res/layout/activity_category.xml" value="0.25416666666666665" />
+        <entry key="..\:/MAD/Explorate-master/app/src/main/res/layout/activity_details.xml" value="0.25416666666666665" />
+        <entry key="..\:/MAD/Explorate-master/app/src/main/res/layout/activity_list_wise.xml" value="0.25416666666666665" />
+        <entry key="..\:/MAD/Explorate-master/app/src/main/res/layout/activity_main.xml" value="0.1793478260869565" />
+        <entry key="..\:/MAD/Explorate-master/app/src/main/res/layout/row.xml" value="0.1793478260869565" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/FirstTourist/app/src/main/res/drawable/build_grad_five.xml" value="0.2703125" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/FirstTourist/app/src/main/res/drawable/build_grad_four.xml" value="0.2703125" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/FirstTourist/app/src/main/res/drawable/build_grad_one.xml" value="0.2703125" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/FirstTourist/app/src/main/res/drawable/build_grad_six.xml" value="0.2703125" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/FirstTourist/app/src/main/res/drawable/build_grad_three.xml" value="0.2703125" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/FirstTourist/app/src/main/res/drawable/build_grad_two.xml" value="0.2703125" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/FirstTourist/app/src/main/res/drawable/cut_card_background.xml" value="0.2703125" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/FirstTourist/app/src/main/res/drawable/ic_favorite.xml" value="0.2703125" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/FirstTourist/app/src/main/res/drawable/layoutgradient.xml" value="0.2703125" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/FirstTourist/app/src/main/res/drawable/row.xml" value="0.2703125" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/FirstTourist/app/src/main/res/drawable/title_background.xml" value="0.2703125" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/FirstTourist/app/src/main/res/layout/activity_category.xml" value="0.1" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/FirstTourist/app/src/main/res/layout/activity_details.xml" value="0.264" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/FirstTourist/app/src/main/res/layout/activity_list_wise.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/FirstTourist/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/hp/AndroidStudioProjects/FirstTourist/app/src/main/res/layout/row.xml" value="0.13020833333333334" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
