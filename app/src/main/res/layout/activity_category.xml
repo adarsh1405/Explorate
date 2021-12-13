@@ -47,7 +47,8 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="monospace"
                     android:padding="25dp"
-                    android:text="@string/falls"
+                    android:layout_marginTop="15dp"
+                    android:text="Waterfalls"
                     android:textColor="@color/black"
                     android:textSize="25sp"
                     android:textStyle="bold" />
@@ -58,12 +59,13 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
                     android:background="#00000000"
-                    android:fontFamily="monospace"
-                    android:padding="20dp"
-                    android:text="@string/expand_all"
+                    android:fontFamily="@font/adamina"
+                    android:text="Waterfalls wouldn’t sound so melodious if there were no rocks in their way "
+                    android:textAllCaps="false"
+                    android:textSize="12dp"
                     android:textAlignment="viewStart"
                     android:textColor="@color/black"
-                    android:textStyle="bold"
+                    android:textStyle="italic"
                     tools:ignore="DuplicateSpeakableTextCheck" />
             </RelativeLayout>
 
@@ -95,7 +97,8 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="monospace"
                     android:padding="25dp"
-                    android:text="@string/temples"
+                    android:layout_marginTop="15dp"
+                    android:text="Temples"
                     android:textColor="@color/black"
                     android:textSize="25sp"
                     android:textStyle="bold" />
@@ -106,12 +109,13 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
                     android:background="#00000000"
-                    android:fontFamily="monospace"
-                    android:padding="20dp"
-                    android:text="@string/expand_all"
+                    android:fontFamily="@font/adamina"
+                    android:text="The doorstep to the temple of wisdom is a knowledge of our own ignorance."
+                    android:textAllCaps="false"
+                    android:textSize="12dp"
                     android:textAlignment="viewStart"
                     android:textColor="@color/black"
-                    android:textStyle="bold"
+                    android:textStyle="italic"
                     tools:ignore="TextContrastCheck" />
             </RelativeLayout>
 
@@ -139,7 +143,7 @@
                 android:background="@drawable/build_grad_three">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="250dp"
                     android:layout_height="wrap_content"
                     android:fontFamily="monospace"
                     android:padding="25dp"
@@ -154,12 +158,13 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
                     android:background="#00000000"
-                    android:fontFamily="monospace"
-                    android:padding="20dp"
-                    android:text="@string/expand_all"
+                    android:fontFamily="@font/adamina"
+                    android:text="The wildlife and its habitat cannot speak, so we must and we will."
+                    android:textAllCaps="false"
+                    android:textSize="12dp"
                     android:textAlignment="viewStart"
                     android:textColor="@color/black"
-                    android:textStyle="bold" />
+                    android:textStyle="italic" />
             </RelativeLayout>
 
             <ImageView
@@ -190,6 +195,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="monospace"
                     android:padding="25dp"
+                    android:layout_marginTop="15dp"
                     android:text="@string/beaches"
                     android:textColor="@color/black"
                     android:textSize="25sp"
@@ -202,12 +208,13 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
                     android:background="#00000000"
-                    android:fontFamily="monospace"
-                    android:padding="20dp"
-                    android:text="@string/expand_all"
+                    android:fontFamily="@font/adamina"
+                    android:text="To escape and sit quietly on the beach – that’s the idea of paradise."
+                    android:textAllCaps="false"
+                    android:textSize="12dp"
                     android:textAlignment="viewStart"
                     android:textColor="@color/black"
-                    android:textStyle="bold" />
+                    android:textStyle="italic" />
             </RelativeLayout>
 
             <ImageView
@@ -239,6 +246,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="monospace"
                     android:padding="25dp"
+                    android:layout_marginTop="15dp"
                     android:text="@string/museums"
                     android:textColor="@color/black"
                     android:textSize="25sp"
@@ -250,12 +258,13 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
                     android:background="#00000000"
-                    android:fontFamily="monospace"
-                    android:padding="20dp"
-                    android:text="@string/expand_all"
+                    android:fontFamily="@font/adamina"
+                    android:text="Real museums are places where Time is transformed into Space."
+                    android:textAllCaps="false"
+                    android:textSize="12dp"
                     android:textAlignment="viewStart"
                     android:textColor="@color/black"
-                    android:textStyle="bold" />
+                    android:textStyle="italic" />
             </RelativeLayout>
 
             <ImageView
@@ -282,11 +291,11 @@
                 android:background="@drawable/build_grad_six">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="200dp"
                     android:layout_height="wrap_content"
                     android:fontFamily="monospace"
                     android:padding="25dp"
-                    android:text="Hill         Stations"
+                    android:text="Hill Stations"
                     android:textColor="@color/black"
                     android:textSize="25sp"
                     android:textStyle="bold" />
@@ -297,12 +306,13 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
                     android:background="#00000000"
-                    android:fontFamily="monospace"
-                    android:padding="20dp"
-                    android:text="@string/expand_all"
+                    android:fontFamily="@font/adamina"
+                    android:text="Every mountain top is within reach if you just keep climbing."
+                    android:textAllCaps="false"
+                    android:textSize="12dp"
                     android:textAlignment="viewStart"
                     android:textColor="@color/black"
-                    android:textStyle="bold" />
+                    android:textStyle="italic" />
             </RelativeLayout>
 
             <ImageView

@@ -320,7 +320,6 @@ public class ListWise extends AppCompatActivity {
 
                 json = new String(buffer,"UTF-8");
                 JSONArray jsonArray = new JSONArray(json);
-
                 for(int i=0;i<jsonArray.length();i++)
                 {
                     JSONObject obj = jsonArray.getJSONObject(i);
@@ -366,7 +365,7 @@ public class ListWise extends AppCompatActivity {
                     intent.putExtra("Location",  mlocation[position]);
                     intent.putExtra("Description",  mDescription[position]);
                     intent.putExtra("Image", images_url[position]);
-                    intent.putExtra("Rating",Float.toString(mrating[position]));
+                    intent.putExtra("rating",Float.toString(mrating[position]));
                     startActivity(intent);
 
 
