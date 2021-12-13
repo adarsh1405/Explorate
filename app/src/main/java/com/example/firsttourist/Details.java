@@ -1,8 +1,14 @@
 package com.example.firsttourist;
 
+import static android.location.LocationManager.*;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
+import android.content.Context;
 import android.content.Intent;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
@@ -31,6 +37,8 @@ public class Details extends AppCompatActivity {
                 String description = intent.getStringExtra("Description");
                 String image_url = intent.getStringExtra("Image");
                 String rating = intent.getStringExtra("rating");
+
+
                 t2.setText(description);
                 Glide.with(this)
                         .load(image_url)
@@ -39,8 +47,15 @@ public class Details extends AppCompatActivity {
                 rb1.setRating(Float.parseFloat(rating));
                 im.setContentDescription(name);
                 this.setTitle(name);
-
+                getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             }
 
+    }
+
+    @Override
+    public boolean onSupportNavigateUp()
+    {
+        onBackPressed();
+        return true;
     }
 }
