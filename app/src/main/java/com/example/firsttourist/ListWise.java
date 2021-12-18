@@ -26,6 +26,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ListWise extends AppCompatActivity {
     ListView lv;
@@ -34,6 +35,7 @@ public class ListWise extends AppCompatActivity {
     String mlocation[];
     String mDescription[];
     String images_url[];
+    String mcity[];
     float mrating[];
 
     @Override
@@ -48,6 +50,7 @@ public class ListWise extends AppCompatActivity {
         ArrayList<String> name = new ArrayList<String>();
         ArrayList<String> location =new ArrayList<String>();
         ArrayList<String> description = new ArrayList<String>();
+        ArrayList<String> city = new ArrayList<String>();
         ArrayList<String> rating=new ArrayList<String>();
         if(ltype==1)
         {
@@ -71,6 +74,7 @@ public class ListWise extends AppCompatActivity {
                         name.add(obj.getString("name"));
                         description.add(obj.getString("description"));
                         location.add(obj.getString("location"));
+                        city.add(obj.getString("city"));
                         rating.add(obj.getString("rating"));
                     }
                 }
@@ -84,6 +88,7 @@ public class ListWise extends AppCompatActivity {
             mDescription = new String[len];
             mlocation = new String[len];
             images_url = new String[len];
+            mcity = new String[len];
             mrating = new float[len];
 
             for(int i=0;i<name.size();i++)
@@ -91,6 +96,7 @@ public class ListWise extends AppCompatActivity {
                 mTitle[i] = name.get(i);
                 mlocation[i]=location.get(i);
                 mDescription[i]=description.get(i);
+                mcity[i]=city.get(i);
                 mrating[i]  = Float.parseFloat(rating.get(i));
                 images_url[i]=url.get(i);
             }
@@ -107,6 +113,7 @@ public class ListWise extends AppCompatActivity {
                     intent.putExtra("Location",  mlocation[position]);
                     intent.putExtra("Description",  mDescription[position]);
                     intent.putExtra("Image", images_url[position]);
+                    intent.putExtra("city", mcity[position]);
                     intent.putExtra("rating",Float.toString(mrating[position]));
                     startActivity(intent);
 
@@ -136,6 +143,7 @@ public class ListWise extends AppCompatActivity {
                         name.add(obj.getString("name"));
                         description.add(obj.getString("description"));
                         location.add(obj.getString("location"));
+                        city.add(obj.getString("city"));
                         rating.add(obj.getString("rating"));
                     }
                 }
@@ -149,6 +157,7 @@ public class ListWise extends AppCompatActivity {
             mDescription = new String[len];
             mlocation = new String[len];
             images_url = new String[len];
+            mcity = new String[len];
             mrating = new float[len];
 
             for(int i=0;i<name.size();i++)
@@ -156,6 +165,7 @@ public class ListWise extends AppCompatActivity {
                 mTitle[i] = name.get(i);
                 mlocation[i]=location.get(i);
                 mDescription[i]=description.get(i);
+                mcity[i]=city.get(i);
                 mrating[i]  = Float.parseFloat(rating.get(i));
                 images_url[i]=url.get(i);
             }
@@ -172,6 +182,7 @@ public class ListWise extends AppCompatActivity {
                     intent.putExtra("Location",  mlocation[position]);
                     intent.putExtra("Description",  mDescription[position]);
                     intent.putExtra("Image", images_url[position]);
+                    intent.putExtra("city", mcity[position]);
                     intent.putExtra("rating",Float.toString(mrating[position]));
                     startActivity(intent);
 
@@ -201,6 +212,7 @@ public class ListWise extends AppCompatActivity {
                         name.add(obj.getString("name"));
                         description.add(obj.getString("description"));
                         location.add(obj.getString("location"));
+                        city.add(obj.getString("city"));
                         rating.add(obj.getString("rating"));
                     }
                 }
@@ -214,6 +226,7 @@ public class ListWise extends AppCompatActivity {
             mDescription = new String[len];
             mlocation = new String[len];
             images_url = new String[len];
+            mcity = new String[len];
             mrating = new float[len];
 
             for(int i=0;i<name.size();i++)
@@ -221,6 +234,7 @@ public class ListWise extends AppCompatActivity {
                 mTitle[i] = name.get(i);
                 mlocation[i]=location.get(i);
                 mDescription[i]=description.get(i);
+                mcity[i]=city.get(i);
                 mrating[i]  = Float.parseFloat(rating.get(i));
                 images_url[i]=url.get(i);
             }
@@ -237,6 +251,7 @@ public class ListWise extends AppCompatActivity {
                     intent.putExtra("Location",  mlocation[position]);
                     intent.putExtra("Description",  mDescription[position]);
                     intent.putExtra("Image", images_url[position]);
+                    intent.putExtra("city", mcity[position]);
                     intent.putExtra("rating",Float.toString(mrating[position]));
                     startActivity(intent);
 
@@ -256,6 +271,7 @@ public class ListWise extends AppCompatActivity {
 
                 json = new String(buffer,"UTF-8");
                 JSONArray jsonArray = new JSONArray(json);
+
                 for(int i=0;i<jsonArray.length();i++)
                 {
                     JSONObject obj = jsonArray.getJSONObject(i);
@@ -265,6 +281,7 @@ public class ListWise extends AppCompatActivity {
                         name.add(obj.getString("name"));
                         description.add(obj.getString("description"));
                         location.add(obj.getString("location"));
+                        city.add(obj.getString("city"));
                         rating.add(obj.getString("rating"));
                     }
                 }
@@ -278,6 +295,7 @@ public class ListWise extends AppCompatActivity {
             mDescription = new String[len];
             mlocation = new String[len];
             images_url = new String[len];
+            mcity = new String[len];
             mrating = new float[len];
 
             for(int i=0;i<name.size();i++)
@@ -285,6 +303,7 @@ public class ListWise extends AppCompatActivity {
                 mTitle[i] = name.get(i);
                 mlocation[i]=location.get(i);
                 mDescription[i]=description.get(i);
+                mcity[i]=city.get(i);
                 mrating[i]  = Float.parseFloat(rating.get(i));
                 images_url[i]=url.get(i);
             }
@@ -301,6 +320,7 @@ public class ListWise extends AppCompatActivity {
                     intent.putExtra("Location",  mlocation[position]);
                     intent.putExtra("Description",  mDescription[position]);
                     intent.putExtra("Image", images_url[position]);
+                    intent.putExtra("city", mcity[position]);
                     intent.putExtra("rating",Float.toString(mrating[position]));
                     startActivity(intent);
 
@@ -320,6 +340,7 @@ public class ListWise extends AppCompatActivity {
 
                 json = new String(buffer,"UTF-8");
                 JSONArray jsonArray = new JSONArray(json);
+
                 for(int i=0;i<jsonArray.length();i++)
                 {
                     JSONObject obj = jsonArray.getJSONObject(i);
@@ -329,6 +350,7 @@ public class ListWise extends AppCompatActivity {
                         name.add(obj.getString("name"));
                         description.add(obj.getString("description"));
                         location.add(obj.getString("location"));
+                        city.add(obj.getString("city"));
                         rating.add(obj.getString("rating"));
                     }
                 }
@@ -342,6 +364,7 @@ public class ListWise extends AppCompatActivity {
             mDescription = new String[len];
             mlocation = new String[len];
             images_url = new String[len];
+            mcity = new String[len];
             mrating = new float[len];
 
             for(int i=0;i<name.size();i++)
@@ -349,6 +372,7 @@ public class ListWise extends AppCompatActivity {
                 mTitle[i] = name.get(i);
                 mlocation[i]=location.get(i);
                 mDescription[i]=description.get(i);
+                mcity[i]=city.get(i);
                 mrating[i]  = Float.parseFloat(rating.get(i));
                 images_url[i]=url.get(i);
             }
@@ -365,6 +389,7 @@ public class ListWise extends AppCompatActivity {
                     intent.putExtra("Location",  mlocation[position]);
                     intent.putExtra("Description",  mDescription[position]);
                     intent.putExtra("Image", images_url[position]);
+                    intent.putExtra("city", mcity[position]);
                     intent.putExtra("rating",Float.toString(mrating[position]));
                     startActivity(intent);
 
@@ -394,6 +419,7 @@ public class ListWise extends AppCompatActivity {
                         name.add(obj.getString("name"));
                         description.add(obj.getString("description"));
                         location.add(obj.getString("location"));
+                        city.add(obj.getString("city"));
                         rating.add(obj.getString("rating"));
                     }
                 }
@@ -407,6 +433,7 @@ public class ListWise extends AppCompatActivity {
             mDescription = new String[len];
             mlocation = new String[len];
             images_url = new String[len];
+            mcity = new String[len];
             mrating = new float[len];
 
             for(int i=0;i<name.size();i++)
@@ -414,7 +441,7 @@ public class ListWise extends AppCompatActivity {
                 mTitle[i] = name.get(i);
                 mlocation[i]=location.get(i);
                 mDescription[i]=description.get(i);
-
+                mcity[i]=city.get(i);
                 mrating[i]  = Float.parseFloat(rating.get(i));
                 images_url[i]=url.get(i);
             }
@@ -431,6 +458,7 @@ public class ListWise extends AppCompatActivity {
                     intent.putExtra("Location",  mlocation[position]);
                     intent.putExtra("Description",  mDescription[position]);
                     intent.putExtra("Image", images_url[position]);
+                    intent.putExtra("city", mcity[position]);
                     intent.putExtra("rating",Float.toString(mrating[position]));
                     startActivity(intent);
 
