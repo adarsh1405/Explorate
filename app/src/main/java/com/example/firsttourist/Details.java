@@ -72,7 +72,14 @@ public class Details extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         googleMap = findViewById(R.id.map);
 
-        TextView weather = findViewById(R.id.weather);
+        TextView weather_desc = findViewById(R.id.weather_description);
+        TextView weather_temp = findViewById(R.id.weather_temp);
+        TextView text_feelslike = findViewById(R.id.text_feelslike);
+        TextView text_pressure = findViewById(R.id.text_pressure);
+        TextView text_wind = findViewById(R.id.text_wind);
+        TextView text_humidity = findViewById(R.id.text_humidity);
+
+        ImageView weather_icon = findViewById(R.id.weather_icon);
 
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
@@ -102,8 +109,6 @@ public class Details extends AppCompatActivity {
             StringRequest stringRequest = new StringRequest(Request.Method.POST, tempUrl, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
-
-                    String output = "";
                     try {
 
                         JSONObject jsonResponse = new JSONObject(response);
@@ -122,16 +127,15 @@ public class Details extends AppCompatActivity {
                         JSONObject jsonObjectSys = jsonResponse.getJSONObject("sys");
                         String countryName = jsonObjectSys.getString("country");
                         String cityName = jsonResponse.getString("name");
-                        weather.setTextColor(Color.rgb(68,134,199));
-                        output += "Current weather of " + cityName + " (" + countryName + ")"
-                                + "\n Temp: " + df.format(temp) + " °C"
-                                + "\n Feels Like: " + df.format(feelsLike) + " °C"
-                                + "\n Humidity: " + humidity + "%"
-                                + "\n Description: " + description
-                                + "\n Wind Speed: " + wind + "m/s (meters per second)"
-                                + "\n Cloudiness: " + clouds + "%"
-                                + "\n Pressure: " + pressure + " hPa";
-                        weather.setText(output);
+
+                        weather_desc.setText(description);
+                        weather_temp.setText(df.format(temp) + "°C");
+                        text_feelslike.setText(df.format(feelsLike) + "°C");
+                        text_pressure.setText(pressure + "\nhPa");
+                        text_wind.setText(wind + "\nm/sec");
+                        text_humidity.setText(humidity + "%");
+
+
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
