@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
+    android:background="#04071c"
     android:padding="12dp">
 
     <ImageView
@@ -20,26 +21,44 @@
         <TextView
             android:id="@+id/textview1"
             android:layout_width="match_parent"
-
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:fontFamily="monospace"
             android:text="@string/main_title"
-            android:textColor="#000"
+            android:textColor="#b9c2fa"
             android:textSize="15sp"
             android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/textview2"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:fontFamily="serif-monospace"
-            android:text="@string/sub_title"
-            android:textColor="#a9a9a9"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            tools:ignore="TextContrastCheck" />
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="3">
+            <TextView
+                android:id="@+id/textview2"
+                android:layout_weight="2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:fontFamily="serif-monospace"
+                android:text="@string/sub_title"
+                android:textColor="#a9a9a9"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                tools:ignore="TextContrastCheck" />
+
+            <TextView
+                android:id="@+id/dist"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="monospace"
+                android:gravity="right"
+                android:text="distance"
+                android:textColor="#ffffff"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+        </LinearLayout>
 
         <RatingBar
             android:id="@+id/ratingBar"

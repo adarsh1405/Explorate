@@ -54,9 +54,7 @@ import java.text.DecimalFormat;
 import java.util.Objects;
 
 public class Details extends AppCompatActivity {
-    private LocationRequest locationRequest;
-    private Button googleMap;
-    Double latitude=0.0, longitude=0.0;
+
 
     private final String weather_url="http://api.openweathermap.org/data/2.5/weather";
     private final String appid="4f180633048c290fbcb29a36742d179a";
@@ -70,7 +68,7 @@ public class Details extends AppCompatActivity {
         ImageView im = findViewById(R.id.image);
         RatingBar rb1 = findViewById(R.id.detail_rating);
         Toolbar toolbar = findViewById(R.id.toolbar);
-        googleMap = findViewById(R.id.map);
+
 
         TextView weather_desc = findViewById(R.id.weather_description);
         TextView weather_temp = findViewById(R.id.weather_temp);
@@ -85,7 +83,8 @@ public class Details extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
         Intent intent = getIntent();
-        if (intent != null) {
+        if (intent != null)
+        {
             String name = intent.getStringExtra("Name");
             String description = intent.getStringExtra("Description");
             String image_url = intent.getStringExtra("Image");
@@ -105,7 +104,6 @@ public class Details extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
             String tempUrl = weather_url + "?q=" + city + "&appid=" + appid;
-
             StringRequest stringRequest = new StringRequest(Request.Method.POST, tempUrl, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
@@ -134,6 +132,10 @@ public class Details extends AppCompatActivity {
                         text_pressure.setText(pressure + "\nhPa");
                         text_wind.setText(wind + "\nm/sec");
                         text_humidity.setText(humidity + "%");
+                        if(description.equals("haze"))
+                            weather_icon.setImageResource(R.drawable.cloudy);
+                        else if(description.equals("rain"))
+                            weather_icon.setImageResource(R.drawable.storm);
 
 
                     } catch (JSONException e) {
@@ -150,143 +152,7 @@ public class Details extends AppCompatActivity {
             RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
             requestQueue.add(stringRequest);
 
-
-            locationRequest = LocationRequest.create();
-            locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-            locationRequest.setInterval(5000);
-            locationRequest.setFastestInterval(2000);
-
-            getCurrentLocation();
-
-            googleMap.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v)
-                {
-                    String res = "latitude : "+Double.toString(latitude)+"\n longitude: "+Double.toString(longitude);
-                    Toast.makeText(getApplicationContext(),res,Toast.LENGTH_SHORT).show();
-                }
-            });
         }
-
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-
-        if (requestCode == 1) {
-            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-
-                if (isGPSEnabled()) {
-
-                    getCurrentLocation();
-
-                } else {
-
-                    turnOnGPS();
-                }
-            }
-        }
-
-
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == 2) {
-            if (resultCode == Activity.RESULT_OK) {
-
-                getCurrentLocation();
-            }
-        }
-    }
-
-    private void getCurrentLocation() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (ActivityCompat.checkSelfPermission(Details.this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-
-                if (isGPSEnabled()) {
-
-                    LocationServices.getFusedLocationProviderClient(Details.this)
-                            .requestLocationUpdates(locationRequest, new LocationCallback() {
-                                @Override
-                                public void onLocationResult(@NonNull LocationResult locationResult) {
-                                    super.onLocationResult(locationResult);
-
-                                    LocationServices.getFusedLocationProviderClient(Details.this)
-                                            .removeLocationUpdates(this);
-
-                                    if (locationResult != null && locationResult.getLocations().size() > 0) {
-
-                                        int index = locationResult.getLocations().size() - 1;
-                                        latitude = locationResult.getLocations().get(index).getLatitude();
-                                        longitude = locationResult.getLocations().get(index).getLongitude();
-//                                         AddressText.setText("Latitude: "+ latitude + "\n" + "Longitude: "+ longitude);
-                                    }
-                                }
-                            }, Looper.getMainLooper());
-
-                } else {
-                    turnOnGPS();
-                }
-
-            } else {
-                requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
-            }
-        }
-    }
-
-    private void turnOnGPS() {
-        LocationSettingsRequest.Builder builder = new LocationSettingsRequest.Builder()
-                .addLocationRequest(locationRequest);
-        builder.setAlwaysShow(true);
-
-        Task<LocationSettingsResponse> result = LocationServices.getSettingsClient(getApplicationContext())
-                .checkLocationSettings(builder.build());
-
-        result.addOnCompleteListener(new OnCompleteListener<LocationSettingsResponse>() {
-            @Override
-            public void onComplete(@NonNull Task<LocationSettingsResponse> task) {
-
-                try {
-                    LocationSettingsResponse response = task.getResult(ApiException.class);
-                    Toast.makeText(Details.this, "GPS is already tured on", Toast.LENGTH_SHORT).show();
-
-                } catch (ApiException e) {
-
-                    switch (e.getStatusCode()) {
-                        case LocationSettingsStatusCodes.RESOLUTION_REQUIRED:
-
-                            try {
-                                ResolvableApiException resolvableApiException = (ResolvableApiException) e;
-                                resolvableApiException.startResolutionForResult(Details.this, 2);
-                            } catch (IntentSender.SendIntentException ex) {
-                                ex.printStackTrace();
-                            }
-                            break;
-
-                        case LocationSettingsStatusCodes.SETTINGS_CHANGE_UNAVAILABLE:
-                            //Device does not have location
-                            break;
-                    }
-                }
-            }
-        });
-
-    }
-
-    private boolean isGPSEnabled() {
-        LocationManager locationManager = null;
-        boolean isEnabled = false;
-
-        if (locationManager == null) {
-            locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        }
-
-        isEnabled = locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
-        return isEnabled;
 
     }
 

@@ -3,13 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/MAD/Explorate-master/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2703125" />
+        <entry key="..\:/MAD/Explorate-master/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.2703125" />
         <entry key="..\:/MAD/Explorate-master/app/src/main/res/drawable/rounded_background.xml" value="0.2703125" />
         <entry key="..\:/MAD/Explorate-master/app/src/main/res/drawable/title_background.xml" value="0.19739583333333333" />
-        <entry key="..\:/MAD/Explorate-master/app/src/main/res/layout/activity_category.xml" value="0.25416666666666665" />
+        <entry key="..\:/MAD/Explorate-master/app/src/main/res/layout/activity_category.xml" value="0.264" />
         <entry key="..\:/MAD/Explorate-master/app/src/main/res/layout/activity_details.xml" value="0.25416666666666665" />
         <entry key="..\:/MAD/Explorate-master/app/src/main/res/layout/activity_list_wise.xml" value="0.25416666666666665" />
         <entry key="..\:/MAD/Explorate-master/app/src/main/res/layout/activity_main.xml" value="0.1793478260869565" />
-        <entry key="..\:/MAD/Explorate-master/app/src/main/res/layout/row.xml" value="0.1793478260869565" />
+        <entry key="..\:/MAD/Explorate-master/app/src/main/res/layout/row.xml" value="0.264" />
+        <entry key="..\:/MAD/Explorate-master/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2703125" />
         <entry key="..\:/MAD/Explorate-master/app/src/main/res/xml/network_security_config.xml" value="0.18645833333333334" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/FirstTourist/app/src/main/res/drawable/build_grad_five.xml" value="0.2703125" />
         <entry key="..\:/Users/hp/AndroidStudioProjects/FirstTourist/app/src/main/res/drawable/build_grad_four.xml" value="0.2703125" />

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,7 +17,15 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+import com.arlib.floatingsearchview.FloatingSearchView;
 import com.bumptech.glide.Glide;
 
 import org.json.JSONArray;
@@ -25,6 +34,7 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -37,6 +47,11 @@ public class ListWise extends AppCompatActivity {
     String images_url[];
     String mcity[];
     float mrating[];
+    String mdist[];
+    String dist_token = "pk.eyJ1IjoiYWRhcnNoMTQwNSIsImEiOiJja3hrYmRiZ3IxdnJmMnBucDl6aXlrZHdnIn0.uC5YXganbaH08SNcbzHNpA";
+    double d_lat=0.0,d_lon=0.0,i_lat=0.0,i_lon=0.0;
+
+    DecimalFormat df = new DecimalFormat("#.##");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +60,10 @@ public class ListWise extends AppCompatActivity {
         lv = findViewById(R.id.listview1);
         Intent i1=getIntent();
         ltype=i1.getIntExtra("Type",1);
+
+        i_lat = i1.getDoubleExtra("i_lat",1.0);
+        i_lon = i1.getDoubleExtra("i_lon",1.0);
+
         String json;
         ArrayList<String> url = new ArrayList<String>();
         ArrayList<String> name = new ArrayList<String>();
@@ -52,6 +71,8 @@ public class ListWise extends AppCompatActivity {
         ArrayList<String> description = new ArrayList<String>();
         ArrayList<String> city = new ArrayList<String>();
         ArrayList<String> rating=new ArrayList<String>();
+        ArrayList<String> dist = new ArrayList<String>();
+
         if(ltype==1)
         {
             try
@@ -61,10 +82,8 @@ public class ListWise extends AppCompatActivity {
                 byte[] buffer = new byte[size];
                 is.read(buffer);
                 is.close();
-
                 json = new String(buffer,"UTF-8");
                 JSONArray jsonArray = new JSONArray(json);
-
                 for(int i=0;i<jsonArray.length();i++)
                 {
                     JSONObject obj = jsonArray.getJSONObject(i);
@@ -76,11 +95,32 @@ public class ListWise extends AppCompatActivity {
                         location.add(obj.getString("location"));
                         city.add(obj.getString("city"));
                         rating.add(obj.getString("rating"));
+                        d_lat = Double.parseDouble(obj.getString("latitude"));
+                        d_lon = Double.parseDouble(obj.getString("longitude"));
+
+                        double lon1 = Math.toRadians(i_lon);
+                        double lon2 = Math.toRadians(d_lon);
+                        double lat1 = Math.toRadians(i_lat);
+                        double lat2 = Math.toRadians(d_lat);
+                        // Haversine formula
+                        double dlon = lon2 - lon1;
+                        double dlat = lat2 - lat1;
+                        double a = Math.pow(Math.sin(dlat / 2), 2)
+                                + Math.cos(lat1) * Math.cos(lat2)
+                                * Math.pow(Math.sin(dlon / 2),2);
+                        double c = 2 * Math.asin(Math.sqrt(a));
+                        double r = 6371;
+                        double res=c*r;
+                        dist.add(df.format(res));
                     }
                 }
-            } catch (IOException e) {
+            }
+            catch (IOException e)
+            {
                 e.printStackTrace();
-            } catch (JSONException e) {
+            }
+            catch (JSONException e)
+            {
                 e.printStackTrace();
             }
             int len = name.size();
@@ -90,6 +130,7 @@ public class ListWise extends AppCompatActivity {
             images_url = new String[len];
             mcity = new String[len];
             mrating = new float[len];
+            mdist = new String[len];
 
             for(int i=0;i<name.size();i++)
             {
@@ -99,12 +140,11 @@ public class ListWise extends AppCompatActivity {
                 mcity[i]=city.get(i);
                 mrating[i]  = Float.parseFloat(rating.get(i));
                 images_url[i]=url.get(i);
+                mdist[i] = dist.get(i);
             }
-
-            MyAdapter adapter = new MyAdapter(this, mTitle,mlocation,images_url, mrating);
+            MyAdapter adapter = new MyAdapter(this, mTitle,mlocation,images_url, mrating,mdist);
             lv.setAdapter(adapter);
             lv.setClickable(true);
-
             lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -115,9 +155,8 @@ public class ListWise extends AppCompatActivity {
                     intent.putExtra("Image", images_url[position]);
                     intent.putExtra("city", mcity[position]);
                     intent.putExtra("rating",Float.toString(mrating[position]));
+                    intent.putExtra("dist",mdist[position]);
                     startActivity(intent);
-
-
                 }
             });
         }
@@ -130,10 +169,8 @@ public class ListWise extends AppCompatActivity {
                 byte[] buffer = new byte[size];
                 is.read(buffer);
                 is.close();
-
                 json = new String(buffer,"UTF-8");
                 JSONArray jsonArray = new JSONArray(json);
-
                 for(int i=0;i<jsonArray.length();i++)
                 {
                     JSONObject obj = jsonArray.getJSONObject(i);
@@ -145,11 +182,32 @@ public class ListWise extends AppCompatActivity {
                         location.add(obj.getString("location"));
                         city.add(obj.getString("city"));
                         rating.add(obj.getString("rating"));
+                        d_lat = Double.parseDouble(obj.getString("latitude"));
+                        d_lon = Double.parseDouble(obj.getString("longitude"));
+
+                        double lon1 = Math.toRadians(i_lon);
+                        double lon2 = Math.toRadians(d_lon);
+                        double lat1 = Math.toRadians(i_lat);
+                        double lat2 = Math.toRadians(d_lat);
+                        // Haversine formula
+                        double dlon = lon2 - lon1;
+                        double dlat = lat2 - lat1;
+                        double a = Math.pow(Math.sin(dlat / 2), 2)
+                                + Math.cos(lat1) * Math.cos(lat2)
+                                * Math.pow(Math.sin(dlon / 2),2);
+                        double c = 2 * Math.asin(Math.sqrt(a));
+                        double r = 6371;
+                        double res=c*r;
+                        dist.add(df.format(res));
                     }
                 }
-            } catch (IOException e) {
+            }
+            catch (IOException e)
+            {
                 e.printStackTrace();
-            } catch (JSONException e) {
+            }
+            catch (JSONException e)
+            {
                 e.printStackTrace();
             }
             int len = name.size();
@@ -159,6 +217,7 @@ public class ListWise extends AppCompatActivity {
             images_url = new String[len];
             mcity = new String[len];
             mrating = new float[len];
+            mdist = new String[len];
 
             for(int i=0;i<name.size();i++)
             {
@@ -168,12 +227,11 @@ public class ListWise extends AppCompatActivity {
                 mcity[i]=city.get(i);
                 mrating[i]  = Float.parseFloat(rating.get(i));
                 images_url[i]=url.get(i);
+                mdist[i] = dist.get(i);
             }
-
-            MyAdapter adapter = new MyAdapter(this, mTitle,mlocation,images_url, mrating);
+            MyAdapter adapter = new MyAdapter(this, mTitle,mlocation,images_url, mrating,mdist);
             lv.setAdapter(adapter);
             lv.setClickable(true);
-
             lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -184,9 +242,8 @@ public class ListWise extends AppCompatActivity {
                     intent.putExtra("Image", images_url[position]);
                     intent.putExtra("city", mcity[position]);
                     intent.putExtra("rating",Float.toString(mrating[position]));
+                    intent.putExtra("dist",mdist[position]);
                     startActivity(intent);
-
-
                 }
             });
         }
@@ -199,10 +256,8 @@ public class ListWise extends AppCompatActivity {
                 byte[] buffer = new byte[size];
                 is.read(buffer);
                 is.close();
-
                 json = new String(buffer,"UTF-8");
                 JSONArray jsonArray = new JSONArray(json);
-
                 for(int i=0;i<jsonArray.length();i++)
                 {
                     JSONObject obj = jsonArray.getJSONObject(i);
@@ -214,11 +269,32 @@ public class ListWise extends AppCompatActivity {
                         location.add(obj.getString("location"));
                         city.add(obj.getString("city"));
                         rating.add(obj.getString("rating"));
+                        d_lat = Double.parseDouble(obj.getString("latitude"));
+                        d_lon = Double.parseDouble(obj.getString("longitude"));
+
+                        double lon1 = Math.toRadians(i_lon);
+                        double lon2 = Math.toRadians(d_lon);
+                        double lat1 = Math.toRadians(i_lat);
+                        double lat2 = Math.toRadians(d_lat);
+                        // Haversine formula
+                        double dlon = lon2 - lon1;
+                        double dlat = lat2 - lat1;
+                        double a = Math.pow(Math.sin(dlat / 2), 2)
+                                + Math.cos(lat1) * Math.cos(lat2)
+                                * Math.pow(Math.sin(dlon / 2),2);
+                        double c = 2 * Math.asin(Math.sqrt(a));
+                        double r = 6371;
+                        double res=c*r;
+                        dist.add(df.format(res));
                     }
                 }
-            } catch (IOException e) {
+            }
+            catch (IOException e)
+            {
                 e.printStackTrace();
-            } catch (JSONException e) {
+            }
+            catch (JSONException e)
+            {
                 e.printStackTrace();
             }
             int len = name.size();
@@ -228,6 +304,7 @@ public class ListWise extends AppCompatActivity {
             images_url = new String[len];
             mcity = new String[len];
             mrating = new float[len];
+            mdist = new String[len];
 
             for(int i=0;i<name.size();i++)
             {
@@ -237,12 +314,11 @@ public class ListWise extends AppCompatActivity {
                 mcity[i]=city.get(i);
                 mrating[i]  = Float.parseFloat(rating.get(i));
                 images_url[i]=url.get(i);
+                mdist[i] = dist.get(i);
             }
-
-            MyAdapter adapter = new MyAdapter(this, mTitle,mlocation,images_url, mrating);
+            MyAdapter adapter = new MyAdapter(this, mTitle,mlocation,images_url, mrating,mdist);
             lv.setAdapter(adapter);
             lv.setClickable(true);
-
             lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -253,9 +329,8 @@ public class ListWise extends AppCompatActivity {
                     intent.putExtra("Image", images_url[position]);
                     intent.putExtra("city", mcity[position]);
                     intent.putExtra("rating",Float.toString(mrating[position]));
+                    intent.putExtra("dist",mdist[position]);
                     startActivity(intent);
-
-
                 }
             });
         }
@@ -268,10 +343,8 @@ public class ListWise extends AppCompatActivity {
                 byte[] buffer = new byte[size];
                 is.read(buffer);
                 is.close();
-
                 json = new String(buffer,"UTF-8");
                 JSONArray jsonArray = new JSONArray(json);
-
                 for(int i=0;i<jsonArray.length();i++)
                 {
                     JSONObject obj = jsonArray.getJSONObject(i);
@@ -283,11 +356,32 @@ public class ListWise extends AppCompatActivity {
                         location.add(obj.getString("location"));
                         city.add(obj.getString("city"));
                         rating.add(obj.getString("rating"));
+                        d_lat = Double.parseDouble(obj.getString("latitude"));
+                        d_lon = Double.parseDouble(obj.getString("longitude"));
+
+                        double lon1 = Math.toRadians(i_lon);
+                        double lon2 = Math.toRadians(d_lon);
+                        double lat1 = Math.toRadians(i_lat);
+                        double lat2 = Math.toRadians(d_lat);
+                        // Haversine formula
+                        double dlon = lon2 - lon1;
+                        double dlat = lat2 - lat1;
+                        double a = Math.pow(Math.sin(dlat / 2), 2)
+                                + Math.cos(lat1) * Math.cos(lat2)
+                                * Math.pow(Math.sin(dlon / 2),2);
+                        double c = 2 * Math.asin(Math.sqrt(a));
+                        double r = 6371;
+                        double res=c*r;
+                        dist.add(df.format(res));
                     }
                 }
-            } catch (IOException e) {
+            }
+            catch (IOException e)
+            {
                 e.printStackTrace();
-            } catch (JSONException e) {
+            }
+            catch (JSONException e)
+            {
                 e.printStackTrace();
             }
             int len = name.size();
@@ -297,6 +391,7 @@ public class ListWise extends AppCompatActivity {
             images_url = new String[len];
             mcity = new String[len];
             mrating = new float[len];
+            mdist = new String[len];
 
             for(int i=0;i<name.size();i++)
             {
@@ -306,12 +401,11 @@ public class ListWise extends AppCompatActivity {
                 mcity[i]=city.get(i);
                 mrating[i]  = Float.parseFloat(rating.get(i));
                 images_url[i]=url.get(i);
+                mdist[i] = dist.get(i);
             }
-
-            MyAdapter adapter = new MyAdapter(this, mTitle,mlocation,images_url, mrating);
+            MyAdapter adapter = new MyAdapter(this, mTitle,mlocation,images_url, mrating,mdist);
             lv.setAdapter(adapter);
             lv.setClickable(true);
-
             lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -322,9 +416,8 @@ public class ListWise extends AppCompatActivity {
                     intent.putExtra("Image", images_url[position]);
                     intent.putExtra("city", mcity[position]);
                     intent.putExtra("rating",Float.toString(mrating[position]));
+                    intent.putExtra("dist",mdist[position]);
                     startActivity(intent);
-
-
                 }
             });
         }
@@ -337,10 +430,8 @@ public class ListWise extends AppCompatActivity {
                 byte[] buffer = new byte[size];
                 is.read(buffer);
                 is.close();
-
                 json = new String(buffer,"UTF-8");
                 JSONArray jsonArray = new JSONArray(json);
-
                 for(int i=0;i<jsonArray.length();i++)
                 {
                     JSONObject obj = jsonArray.getJSONObject(i);
@@ -352,11 +443,32 @@ public class ListWise extends AppCompatActivity {
                         location.add(obj.getString("location"));
                         city.add(obj.getString("city"));
                         rating.add(obj.getString("rating"));
+                        d_lat = Double.parseDouble(obj.getString("latitude"));
+                        d_lon = Double.parseDouble(obj.getString("longitude"));
+
+                        double lon1 = Math.toRadians(i_lon);
+                        double lon2 = Math.toRadians(d_lon);
+                        double lat1 = Math.toRadians(i_lat);
+                        double lat2 = Math.toRadians(d_lat);
+                        // Haversine formula
+                        double dlon = lon2 - lon1;
+                        double dlat = lat2 - lat1;
+                        double a = Math.pow(Math.sin(dlat / 2), 2)
+                                + Math.cos(lat1) * Math.cos(lat2)
+                                * Math.pow(Math.sin(dlon / 2),2);
+                        double c = 2 * Math.asin(Math.sqrt(a));
+                        double r = 6371;
+                        double res=c*r;
+                        dist.add(df.format(res));
                     }
                 }
-            } catch (IOException e) {
+            }
+            catch (IOException e)
+            {
                 e.printStackTrace();
-            } catch (JSONException e) {
+            }
+            catch (JSONException e)
+            {
                 e.printStackTrace();
             }
             int len = name.size();
@@ -366,6 +478,7 @@ public class ListWise extends AppCompatActivity {
             images_url = new String[len];
             mcity = new String[len];
             mrating = new float[len];
+            mdist = new String[len];
 
             for(int i=0;i<name.size();i++)
             {
@@ -375,12 +488,11 @@ public class ListWise extends AppCompatActivity {
                 mcity[i]=city.get(i);
                 mrating[i]  = Float.parseFloat(rating.get(i));
                 images_url[i]=url.get(i);
+                mdist[i] = dist.get(i);
             }
-
-            MyAdapter adapter = new MyAdapter(this, mTitle,mlocation,images_url, mrating);
+            MyAdapter adapter = new MyAdapter(this, mTitle,mlocation,images_url, mrating,mdist);
             lv.setAdapter(adapter);
             lv.setClickable(true);
-
             lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -391,9 +503,95 @@ public class ListWise extends AppCompatActivity {
                     intent.putExtra("Image", images_url[position]);
                     intent.putExtra("city", mcity[position]);
                     intent.putExtra("rating",Float.toString(mrating[position]));
+                    intent.putExtra("dist",mdist[position]);
                     startActivity(intent);
+                }
+            });
+        }
+        else if(ltype==6)
+        {
+            try
+            {
+                InputStream is = getAssets().open("data.json");
+                int size= is.available();
+                byte[] buffer = new byte[size];
+                is.read(buffer);
+                is.close();
+                json = new String(buffer,"UTF-8");
+                JSONArray jsonArray = new JSONArray(json);
+                for(int i=0;i<jsonArray.length();i++)
+                {
+                    JSONObject obj = jsonArray.getJSONObject(i);
+                    if(obj.getString("category").equals("hill"))
+                    {
+                        url.add(obj.getString("link"));
+                        name.add(obj.getString("name"));
+                        description.add(obj.getString("description"));
+                        location.add(obj.getString("location"));
+                        city.add(obj.getString("city"));
+                        rating.add(obj.getString("rating"));
+                        d_lat = Double.parseDouble(obj.getString("latitude"));
+                        d_lon = Double.parseDouble(obj.getString("longitude"));
 
+                        double lon1 = Math.toRadians(i_lon);
+                        double lon2 = Math.toRadians(d_lon);
+                        double lat1 = Math.toRadians(i_lat);
+                        double lat2 = Math.toRadians(d_lat);
+                        // Haversine formula
+                        double dlon = lon2 - lon1;
+                        double dlat = lat2 - lat1;
+                        double a = Math.pow(Math.sin(dlat / 2), 2)
+                                + Math.cos(lat1) * Math.cos(lat2)
+                                * Math.pow(Math.sin(dlon / 2),2);
+                        double c = 2 * Math.asin(Math.sqrt(a));
+                        double r = 6371;
+                        double res=c*r;
+                        dist.add(df.format(res));
+                    }
+                }
+            }
+            catch (IOException e)
+            {
+                e.printStackTrace();
+            }
+            catch (JSONException e)
+            {
+                e.printStackTrace();
+            }
+            int len = name.size();
+            mTitle= new String[len];
+            mDescription = new String[len];
+            mlocation = new String[len];
+            images_url = new String[len];
+            mcity = new String[len];
+            mrating = new float[len];
+            mdist = new String[len];
 
+            for(int i=0;i<name.size();i++)
+            {
+                mTitle[i] = name.get(i);
+                mlocation[i]=location.get(i);
+                mDescription[i]=description.get(i);
+                mcity[i]=city.get(i);
+                mrating[i]  = Float.parseFloat(rating.get(i));
+                images_url[i]=url.get(i);
+                mdist[i] = dist.get(i);
+            }
+            MyAdapter adapter = new MyAdapter(this, mTitle,mlocation,images_url, mrating,mdist);
+            lv.setAdapter(adapter);
+            lv.setClickable(true);
+            lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Intent intent = new Intent(ListWise.this, Details.class);
+                    intent.putExtra("Name", mTitle[position]);
+                    intent.putExtra("Location",  mlocation[position]);
+                    intent.putExtra("Description",  mDescription[position]);
+                    intent.putExtra("Image", images_url[position]);
+                    intent.putExtra("city", mcity[position]);
+                    intent.putExtra("rating",Float.toString(mrating[position]));
+                    intent.putExtra("dist",mdist[position]);
+                    startActivity(intent);
                 }
             });
         }
@@ -401,6 +599,7 @@ public class ListWise extends AppCompatActivity {
         {
             try
             {
+                String get_city = i1.getStringExtra("find_city");
                 InputStream is = getAssets().open("data.json");
                 int size= is.available();
                 byte[] buffer = new byte[size];
@@ -413,7 +612,7 @@ public class ListWise extends AppCompatActivity {
                 for(int i=0;i<jsonArray.length();i++)
                 {
                     JSONObject obj = jsonArray.getJSONObject(i);
-                    if(obj.getString("category").equals("hill"))
+                    if(obj.getString("city").equalsIgnoreCase(get_city))
                     {
                         url.add(obj.getString("link"));
                         name.add(obj.getString("name"));
@@ -446,7 +645,7 @@ public class ListWise extends AppCompatActivity {
                 images_url[i]=url.get(i);
             }
 
-            MyAdapter adapter = new MyAdapter(this, mTitle,mlocation,images_url, mrating);
+            MyAdapter adapter = new MyAdapter(this, mTitle,mlocation,images_url, mrating,mdist);
             lv.setAdapter(adapter);
             lv.setClickable(true);
 
@@ -466,8 +665,6 @@ public class ListWise extends AppCompatActivity {
                 }
             });
         }
-
-
     }
 
 
@@ -477,13 +674,15 @@ public class ListWise extends AppCompatActivity {
         String rLocation[];
         String rImgs[];
         float ra[];
-        MyAdapter(Context c, String title[], String location[], String imgs[], float r[]){
+        String rDist[];
+        MyAdapter(Context c, String title[], String location[], String imgs[], float r[],String dist[]){
             super(c, R.layout.row, R.id.textview1, title);
             this.context = c;
             this.rTitle = title;
             this.rLocation=location;
             this.rImgs = imgs;
             this.ra=r;
+            this.rDist=dist;
         }
         @NonNull
         @Override
@@ -493,6 +692,7 @@ public class ListWise extends AppCompatActivity {
             ImageView images = row.findViewById(R.id.image);
             TextView myTitle = row.findViewById(R.id.textview1);
             TextView myDescription = row.findViewById(R.id.textview2);
+            TextView mDistance = row.findViewById(R.id.dist);
             RatingBar rb=row.findViewById(R.id.ratingBar);
             Glide.with(row)
                     .load(rImgs[position])
@@ -500,6 +700,13 @@ public class ListWise extends AppCompatActivity {
                     .into(images);
             myTitle.setText(rTitle[position]);
             myDescription.setText(rLocation[position]);
+            if(Double.parseDouble(rDist[position])<=60)
+                mDistance.setTextColor(Color.parseColor("#17ff2e"));
+            else if(Double.parseDouble(rDist[position])>60 && Double.parseDouble(rDist[position])<=100)
+                mDistance.setTextColor(Color.parseColor("#f7ff17"));
+            else
+                mDistance.setTextColor(Color.parseColor("#ff4917"));
+            mDistance.setText(rDist[position]+"km");
             rb.setRating(ra[position]);
             return row;
         }

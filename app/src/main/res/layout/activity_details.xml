@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#04071c"
     tools:context=".Details">
 
     <com.google.android.material.appbar.AppBarLayout
@@ -17,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
-            app:contentScrim="@color/teal_700"
+            app:contentScrim="#04071c"
             app:expandedTitleMarginStart="15dp"
             app:expandedTitleMarginBottom="20dp"
             app:expandedTitleTextAppearance="@style/TextAppearance.AppCompat.Large"
@@ -78,8 +79,7 @@
                 android:paddingRight="16dp"
                 android:orientation="horizontal"
                 android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:background="@color/white">
+                android:layout_alignParentTop="true">
 
                 <Button
                     android:layout_width="90dp"
@@ -131,12 +131,12 @@
                 android:layout_height="200dp"
                 android:layout_margin="10dp">
                 <RelativeLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="170dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="25dp"
                     android:layout_marginEnd="25dp"
-                    android:background="#ebe9f7">
+                    android:background="#252f4f">
                     <TextView
                         android:id="@+id/weather_description"
                         android:layout_width="170dp"
@@ -146,7 +146,7 @@
                         android:fontFamily="monospace"
                         android:text="NA"
                         android:textAlignment="center"
-                        android:textColor="#000000"
+                        android:textColor="#ffffff"
                         android:textSize="20sp"
                         android:textStyle="bold"/>
                     <TextView
@@ -159,7 +159,7 @@
                         android:fontFamily="monospace"
                         android:text="NA"
                         android:textAlignment="center"
-                        android:textColor="#000000"
+                        android:textColor="#ffffff"
                         android:textSize="28sp"
                         android:textStyle="bold" />
                     <LinearLayout
@@ -189,7 +189,7 @@
                                 android:fontFamily="monospace"
                                 android:gravity="center"
                                 android:text="NA"
-                                android:textColor="#000000"
+                                android:textColor="#ffffff"
                                 android:textSize="14dp" />
                         </LinearLayout>
                         <LinearLayout
@@ -210,7 +210,7 @@
                                 android:layout_height="wrap_content"
                                 android:gravity="center"
                                 android:text="NA"
-                                android:textColor="#000000"
+                                android:textColor="#ffffff"
                                 android:textSize="14dp" />
                         </LinearLayout>
 
@@ -233,7 +233,7 @@
                                 android:fontFamily="monospace"
                                 android:gravity="center"
                                 android:text="NA"
-                                android:textColor="#000000"
+                                android:textColor="#ffffff"
                                 android:textSize="14dp" />
                         </LinearLayout>
 
@@ -256,7 +256,7 @@
                                 android:fontFamily="monospace"
                                 android:gravity="center"
                                 android:text="NA"
-                                android:textColor="#000000"
+                                android:textColor="#ffffff"
                                 android:textSize="14dp" />
                         </LinearLayout>
                     </LinearLayout>
@@ -265,8 +265,7 @@
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="10dp"
-                    app:srcCompat="@drawable/cloudy"
+                    app:srcCompat="@drawable/clear"
                     android:id="@+id/weather_icon"/>
             </RelativeLayout>
 
@@ -279,8 +278,8 @@
                 android:layout_marginBottom="6dp"
                 android:fontFamily="monospace"
                 android:text="Description"
-                android:textColor="#F8151515"
-                android:textSize="18sp"
+                android:textColor="#b9c2fa"
+                android:textSize="25sp"
                 android:textStyle="bold" />
             <TextView
                 android:id="@+id/text1"
@@ -289,7 +288,7 @@
                 android:text="brief description"
                 android:fontFamily="@font/adamina"
                 android:textSize="16dp"
-                android:textColor="#DC2C2B2B"/>
+                android:textColor="#ffffff"/>
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
