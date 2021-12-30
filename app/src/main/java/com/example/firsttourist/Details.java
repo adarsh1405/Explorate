@@ -16,6 +16,7 @@ import android.content.IntentSender;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Looper;
@@ -83,16 +84,30 @@ public class Details extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
         Intent intent = getIntent();
+        String name = intent.getStringExtra("Name");
+        String description = intent.getStringExtra("Description");
+        String image_url = intent.getStringExtra("Image");
+        String rating = intent.getStringExtra("rating");
+        String city = intent.getStringExtra("city");
+        String location = intent.getStringExtra("location");
+
+
+        Button map = findViewById(R.id.map);
+        map.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                String url = "geo:0,0?q=" + name + "," + city;
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(url));
+                i.setPackage("com.google.android.apps.maps");
+                Intent chooser = Intent.createChooser(i,"Map");
+                startActivity(chooser);
+
+            }
+        });
+
         if (intent != null)
         {
-            String name = intent.getStringExtra("Name");
-            String description = intent.getStringExtra("Description");
-            String image_url = intent.getStringExtra("Image");
-            String rating = intent.getStringExtra("rating");
-            String city = intent.getStringExtra("city");
-
-
-
             t2.setText(description);
             Glide.with(this)
                     .load(image_url)

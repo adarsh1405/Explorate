@@ -813,9 +813,6 @@ public class ListWise extends AppCompatActivity {
             TextView mDistance = row.findViewById(R.id.dist);
             RatingBar rb=row.findViewById(R.id.ratingBar);
 
-
-
-
             Glide.with(row)
                     .load(rImgs[position])
                     .placeholder(R.drawable.ic_launcher_foreground)
