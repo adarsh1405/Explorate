@@ -10,6 +10,7 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import android.Manifest;
 import android.app.Activity;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
@@ -103,6 +104,32 @@ public class Details extends AppCompatActivity {
                 Intent chooser = Intent.createChooser(i,"Map");
                 startActivity(chooser);
 
+            }
+        });
+
+        Button ola = findViewById(R.id.ola);
+        ola.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                String url = "olacabs://app/launch?";
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(url));
+                Intent chooser = Intent.createChooser(i,"ola");
+                startActivity(chooser);
+            }
+        });
+
+        Button uber = findViewById(R.id.uber);
+        uber.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                PackageManager pm = getPackageManager();
+                    String url = "uber://?action=setPickup&pickup[formatted_address]=vip&dropoff[formatted_address]="+name+","+location;
+                    url = url.replaceAll("\\s", "%20");
+                    Intent i = new Intent(Intent.ACTION_VIEW);
+                    i.setData(Uri.parse(url));
+                    Intent chooser = Intent.createChooser(i,"uber");
+                    startActivity(chooser);
             }
         });
 

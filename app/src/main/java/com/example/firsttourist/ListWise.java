@@ -252,16 +252,31 @@ public class ListWise extends AppCompatActivity {
             mrating = new float[len];
             mdist = new String[len];
 
-            //not done sorting
-            for(int i=0;i<name.size();i++)
+            //sort the array based on the nearest distance
+            TreeMap<Double , ArrayList<String>> tm = new TreeMap<Double,ArrayList<String>>();
+
+            for(int i=0;i<len;i++)
             {
-                mTitle[i] = name.get(i);
-                mlocation[i]=location.get(i);
-                mDescription[i]=description.get(i);
-                mcity[i]=city.get(i);
-                mrating[i]  = Float.parseFloat(rating.get(i));
-                images_url[i]=url.get(i);
-                mdist[i] = dist.get(i);
+                ArrayList<String> arr = new ArrayList<String>();
+                arr.add(name.get(i));
+                arr.add(location.get(i));
+                arr.add(url.get(i));
+                arr.add(rating.get(i));
+                arr.add(city.get(i));
+                arr.add(description.get(i));
+                tm.put(Double.parseDouble(dist.get(i)),arr);
+            }
+            int count=0;
+            for(Double key : tm.keySet()) {
+                ArrayList<String> so =new ArrayList<String>(tm.get(key));
+                mTitle[count] = so.get(0);
+                mlocation[count]=so.get(1);
+                images_url[count]=so.get(2);
+                mrating[count]  = Float.parseFloat(so.get(3));
+                mcity[count]=so.get(4);
+                mDescription[count]=so.get(5);
+                mdist[count] = Double.toString(key);
+                count++;
             }
             MyAdapter adapter = new MyAdapter(this, mTitle,mlocation,images_url, mrating,mdist);
             lv.setAdapter(adapter);
@@ -546,16 +561,31 @@ public class ListWise extends AppCompatActivity {
             mrating = new float[len];
             mdist = new String[len];
 
-            //not done sorting
-            for(int i=0;i<name.size();i++)
+    //sort the array based on the nearest distance
+            TreeMap<Double , ArrayList<String>> tm = new TreeMap<Double,ArrayList<String>>();
+
+            for(int i=0;i<len;i++)
             {
-                mTitle[i] = name.get(i);
-                mlocation[i]=location.get(i);
-                mDescription[i]=description.get(i);
-                mcity[i]=city.get(i);
-                mrating[i]  = Float.parseFloat(rating.get(i));
-                images_url[i]=url.get(i);
-                mdist[i] = dist.get(i);
+                ArrayList<String> arr = new ArrayList<String>();
+                arr.add(name.get(i));
+                arr.add(location.get(i));
+                arr.add(url.get(i));
+                arr.add(rating.get(i));
+                arr.add(city.get(i));
+                arr.add(description.get(i));
+                tm.put(Double.parseDouble(dist.get(i)),arr);
+            }
+            int count=0;
+            for(Double key : tm.keySet()) {
+                ArrayList<String> so =new ArrayList<String>(tm.get(key));
+                mTitle[count] = so.get(0);
+                mlocation[count]=so.get(1);
+                images_url[count]=so.get(2);
+                mrating[count]  = Float.parseFloat(so.get(3));
+                mcity[count]=so.get(4);
+                mDescription[count]=so.get(5);
+                mdist[count] = Double.toString(key);
+                count++;
             }
             MyAdapter adapter = new MyAdapter(this, mTitle,mlocation,images_url, mrating,mdist);
             lv.setAdapter(adapter);

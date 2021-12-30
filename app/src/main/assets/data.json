@@ -161,8 +161,8 @@
   "category": "temple",
   "rating": "1.474821681922478",
   "city": "bhubaneswar",
-  "latitude": 20.240573,
-  "longitude": 85.835802
+  "latitude": 20.250573,
+  "longitude": 85.85802
  },
  {
   "link": "https:\/\/img.traveltriangle.com\/blog\/wp-content\/tr:w-700,h-400\/uploads\/2019\/12\/Brahmeswara-Temple_5th-dec.jpg",
@@ -177,25 +177,14 @@
  },
  {
   "link": "https:\/\/img.traveltriangle.com\/blog\/wp-content\/tr:w-700,h-400\/uploads\/2019\/12\/Lingaraja-Temple_5th-dec.jpg",
-  "name": "Lingaraja Temple",
+  "name": "Lingaraj Temple",
   "location": "Bhubaneswar",
   "description": "Lingaraja Temple is not only the largest temple in Bhubaneshwar but also in the whole state. It is said that the construction of this temple can be dated back to the 8th century and it is built in the shape of a sanctuary tower. It has a Dravidian Gopuram similar to what you find in most of the South India temples. This temple is dedicated to Lord Shiva and Goddess Parvati. There are many carved figures on the interior and exterior walls of the temple.\n\nThe presiding deity is a manifestation of Goddess Parvati and there are many deities within this temple. There are carved structures of Goddess Durga, Chamunda, Bhairava, and other deities inside the walls of this temple. It is courtyard there are a thousand Lingas also known as Sahastralingas. The tank water inside this temple is said to have healing powers for curing physical illness.\n\nLocation: Lingaraj Nagar, Old Town, Bhubaneswar, Odisha 751002\nHighlights: The Linga inside this temple appeared on its own and is known as ‘Syambhu Linga.’\nTimings: 5:00 am – 9:00 pm",
   "category": "temple",
-  "rating": "2.813488013121911",
+  "rating": "3.813488013121911",
   "city": "bhubaneswar",
   "latitude": 20.237705,
   "longitude": 85.833729
- },
- {
-  "link": "https:\/\/img.traveltriangle.com\/blog\/wp-content\/uploads\/2019\/09\/Odisha-Modern-Art-Gallery.jpg",
-  "name": "Modern Art Gallery",
-  "location": "Bhubaneswar",
-  "description": "How can we leave out “art” when we’re talking about “museums”, “history”, and “heritage”, right? That too when this beautiful art gallery is as famous amongst visitors and locals as the Odisha State Museum itself. Founded by famous artist Tarakanta Parida and Karen Kent, the Orissa Modern Art Gallery in Bhubaneswar has on display some of the best art works from modern young artists as well as veterans in oils, acrylic, lithographs, sketches, etchings, drawings, and sculptures. What makes this Odisha museum unique is that it even gives the most underprivileged but skilled artists of the city a chance to showcase their work here and sell them at fair prices to visitors.\n\nLocation: 132, Forest Park, Bhubaneswar, Odisha 751009\nOpening hours: 11 AM – 7 PM\nEntry fee: Nil",
-  "category": "museums",
-  "rating": "1.032468731672111",
-  "city": "bhubaneswar",
-  "latitude": 20.25678,
-  "longitude": 85.823503
  },
  {
   "link": "https:\/\/img.traveltriangle.com\/blog\/wp-content\/tr:w-700,h-400\/uploads\/2019\/12\/Mukteshwar-Temple_5th-dec.jpg",
@@ -205,8 +194,8 @@
   "category": "temple",
   "rating": "1.2855949145192724",
   "city": "bhubaneswar",
-  "latitude": 20.242706,
-  "longitude": 85.84045
+  "latitude": 20.252706,
+  "longitude": 85.83045
  },
  {
   "link": "https:\/\/img.traveltriangle.com\/blog\/wp-content\/tr:w-700,h-400\/uploads\/2019\/12\/Parsurameswar-Temple_5th-dec.jpg",
@@ -247,7 +236,7 @@
   "location": "BJB Nagar, Bhubaneswar",
   "description": "This grand museum was started by two notable historians of the Ravenshaw College in Cuttack way back in 1932. Prof. N.C. Banerjee and Prof. Ghanshyam Dash vehemently had collected a large assortment of archaeological treasures from several places and out them up on display in a small museum which was situated in the college premises itself at that time. It was only in 1938 that the government recognized the worth of this tiny place and transformed it into the state’s primary museum. Today, it’s the largest museum in Odisha that boasts of an excellent collection of sculptures, bronze items, numismatics, antiquities, armory, copper artifacts, and rare specimens, all offering an insight into the history of this state as well as the country. The chief highlight of the Odisha State Museum is the stone sculptures of Gandhara Art, Odishan Art, and North Indian Art.\n\nLocation: Near Lewis Rd, Kalpana Square, BJB Nagar, Bhubaneswar, Odisha 751014\nOpening hours: 10 AM – 4:30 PM\nEntry fee: INR 20\/- per person",
   "category": "museums",
-  "rating": "1.0911884224461033",
+  "rating": "4.0911884224461033",
   "city": "bhubaneswar",
   "latitude": 20.256287,
   "longitude": 85.841133
@@ -341,6 +330,17 @@
   "longitude": 85.293933
  },
  {
+  "link": "https:\/\/img.traveltriangle.com\/blog\/wp-content\/uploads\/2019\/09\/Odisha-Modern-Art-Gallery.jpg",
+  "name": "Modern Art Gallery",
+  "location": "Bhubaneswar",
+  "description": "How can we leave out “art” when we’re talking about “museums”, “history”, and “heritage”, right? That too when this beautiful art gallery is as famous amongst visitors and locals as the Odisha State Museum itself. Founded by famous artist Tarakanta Parida and Karen Kent, the Orissa Modern Art Gallery in Bhubaneswar has on display some of the best art works from modern young artists as well as veterans in oils, acrylic, lithographs, sketches, etchings, drawings, and sculptures. What makes this Odisha museum unique is that it even gives the most underprivileged but skilled artists of the city a chance to showcase their work here and sell them at fair prices to visitors.\n\nLocation: 132, Forest Park, Bhubaneswar, Odisha 751009\nOpening hours: 11 AM – 7 PM\nEntry fee: Nil",
+  "category": "museums",
+  "rating": "1.032468731672111",
+  "city": "bhubaneswar",
+  "latitude": 20.2578,
+  "longitude": 85.823503
+ },
+ {
   "link": "https:\/\/img.traveltriangle.com\/blog\/wp-content\/uploads\/2019\/09\/Museum-of-Tribal-Arts-Artifacts.jpg",
   "name": "Museum of Tribal Arts Artifacts",
   "location": "Gopabandhu Nagar, Bhubaneswar",
@@ -348,7 +348,7 @@
   "category": "museums",
   "rating": "4.8737520432356085",
   "city": "bhubaneswar",
-  "latitude": 20.283002,
+  "latitude": 20.273002,
   "longitude": 85.806828
  },
  {
@@ -434,7 +434,7 @@
   "location": "Kendrapara",
   "description": "Spread over 145 sq km area, the wetland of Bhitarkanika is segmented into three protected areas namely Bhitarkanika National Park, Bhitarkanika Wildlife Sanctuary and Gahirmatha Marine Sanctuary. This piece of land is frequently inundated by river Brahmani, Dhamra, Baitarani and Pathsala, converting it to a swampy wetland. Surrounded by mangrove vegetation, this national park is home to saltwater crocodiles and estuarine turtles along with other aquatic animals and birds. Other animals spotted here are king cobra, Indian python, black ibis, spotted deer, wild boar, and water monitor lizard. This marshy wetland of Bhitarkanika is the second largest mangrove ecosystem in India after Sundarbans and certainly one of the top national parks in Odisha which one must explore.\n\nLocation: Paramanandpur, Odisha 754248\nOpening Hours: 7 am to 5 pm\nEntrance Fee: INR 20\/person\nHow To Reach: Cuttack is the nearest railhead, 140 km away. One can take a private cab from Cuttack and reach the national park.",
   "category": "forest",
-  "rating": "2.132009973374596",
+  "rating": "4.132009973374596",
   "city": "kendrapara",
   "latitude": 20.742351,
   "longitude": 86.867658
@@ -511,7 +511,7 @@
   "location": "Khanagiri, Bhubaneswar",
   "description": "One of the most popular temples in Odisha is Ram Mandir which is said to be the most visited place in Bhubaneshwar. Images and idols of Lord Rama, Lakshman, and Goddess Sita have been installed here. Many of the major festivals are celebrated in this temple with excitement. There is also a magnificent annual fair conducted inside this temple. The daily aarti draws a lot of devotees to this temple.\n\nThis is a large temple whose spires are visible from different parts of the city. The temple also has idols of Lord Hanuman, Shiva, and many other deities. Many devotees visit this temple during all the Hindu festivals. Ram Navami is the festival not to be missed as it is celebrated here grandly. There are many facilities such as food stalls, lockers, and washrooms available outside this temple.\n\nLocation: Naka Gate Chowk, Khandagiri, Bhubaneswar, Odisha 751030\nHighlights: Morning and evening aarti\nTimings: 6:00 am to 9:00 pm",
   "category": "temple",
-  "rating": "1.8940330800096055",
+  "rating": "2.8940330800096055",
   "city": "bhubaneswar",
   "latitude": 20.271309,
   "longitude": 85.783799
@@ -555,7 +555,7 @@
   "location": "Konark, Puri",
   "description": "It was built in the 13th century and is known for its marvelous architecture. It is dedicated to Lord Sun or Surya. This temple has a unique architecture compared to other temples and are built in the shape of Lord Surya’s chariot. Europeans called it the ‘Black Pagoda.’ It is built in the Kalinga architectural style. There are erotic sculptures on the walls of this temple.\n\nThe sundials carved on this temple tell the time accurately during day and night. This is a World UNESCO heritage site. The structure of the temple was designed in such a way that the rays of the sun falls directly on the main sanctum of the temple. Moreover, there are magnets placed on top of the temple which holds two iron plates sandwiched between stones.\n\nLocation: Konark, Odisha 752111\nHighlights: The temple is in the shape of the Sun’s chariot. The sundial in the shape of the wheel has been an inspiration to design the dial of the wrist watch.\nTimings: 6:00 am – 8:00 pm",
   "category": "temple",
-  "rating": "3.0970874667012676",
+  "rating": "4.3970874667012676",
   "city": "puri",
   "latitude": 19.887595,
   "longitude": 86.094536
@@ -577,7 +577,7 @@
   "location": "Koraput District",
   "description": "This fall is situated 70 kilometers away from town Jeypore. This water descends from the height of 155 meters which gives water to the Machhakunda dam. This area was said to be ruled by the Nanda dynasty of Magadha. Hence the village got its name from this person. Visitors can also see the beautiful landscape of the motherland and Batisi Singhasana which means 32 thrones.\n\nBest season to visit: October to February\nHow to reach: This place is close to a town named Jeypore from where you can get a taxi, bus, and train to reach your destination.\nTips: Avoid taking a selfie to avoid the slippery rocks. You must step there which takes 1 or 2 hours for climbing up and down. So, start early by morning so you can enjoy the rest of the day.You must take your own food and water or buy it from Machkund town.",
   "category": "waterfall",
-  "rating": "1.7268941051689457",
+  "rating": "3.7268941051689457",
   "city": "koraput",
   "latitude": 18.519504,
   "longitude": 82.451175
@@ -621,7 +621,7 @@
   "location": "Nolia Sahi, Konark",
   "description": "Konark Beach is only 3 km away from the revered Konark Sun Temple and therefore naturally well visited. It is very hot here so it is advised to visit the beach in the evening. You can enjoy drinking coconut water here and can buy souvenirs like caps and hats. One can also indulge in adventure activities like Speedboat, Jet Ski and ATV among others.\n\nLocation: Chandrabhaga Sea Beach, Nolia Sahi, Odisha\nFamous For: The sun temple  is located at this beach and which add to the popularity of this beach.",
   "category": "beach",
-  "rating": "1.2055246738750047",
+  "rating": "2.2055246738750047",
   "city": "puri",
   "latitude": 19.866472,
   "longitude": 86.11425
@@ -687,18 +687,18 @@
   "location": "Puri",
   "description": "Founded by Sri Sudarshan Sahoo out of a desire to unite artists and art lovers over a single platform, the Sudarshan Crafts Museum is a great place to visit in Odisha if you wish to see the evolution of sculptures as an eminent form of modern craftsmanship over time. Other than displaying great works of art and craft, this Odisha museum provides has various facilities for artists that give them the opportunity to wield their craft in the workroom here before displaying it to the world in the showroom outside. This place is equipped with a training centre, residential facilities, a Buddhist temple in Japanese style, a library, a showroom (gallery for displaying finished work), and a workshop to facilitate artists and even visitors who wish to practice.\n\nLocation: Station Road, Puri, Odisha 752002\nOpening hours: 7 AM – 8 PM\nEntry fee: INR 5\/- (Indian nationals) | INR 50\/- (Foreign nationals)",
   "category": "museums",
-  "rating": "1.4527941418444619",
+  "rating": "2.4527941418444619",
   "city": "puri",
   "latitude": 19.805591,
   "longitude": 85.835905
  },
  {
   "link": "https:\/\/img.traveltriangle.com\/blog\/wp-content\/tr:w-700,h-400\/uploads\/2019\/06\/Swargadwar-Beach1.jpg",
-  "name": "Swargadwar Beach",
+  "name": "Blue Flag Beach",
   "location": "Puri",
   "description": "If you are someone who loves to visit beaches that are bustling with people and activities, then this beach is the ideal picnic spot for you. However, the beach is also a decent attraction for people who seek quietude. The area around the lighthouse is quite peaceful and deserted. The beach is primarily a bathing beach and even has a religious connotation.\n\nLocation: Swargadwar Rd, Odisha\nFamous For: Sri Chaitanyadev, a sage used to bathe at this beach and so it is an eminent religious place.",
   "category": "beach",
-  "rating": "2.5808092557830324",
+  "rating": "4.7808092557830324",
   "city": "puri",
   "latitude": 19.792436,
   "longitude": 85.819098
@@ -720,7 +720,7 @@
   "location": "Puri District",
   "description": "Jagannath Temple is one of the most sacred pilgrimage destinations in Odisha. It is the temple of Lord Vishnu and holds great significance. It has very high spiritual significance and sees visits of thousands of employees every year. Want to know a mysterious fact about this temple? Well, it is said that the flag on the top of this temple flows in the opposite direction of the wind.\n\nPriests of this Jagannath temple Odisha are said to climb the temple which is as high as a 45-storey building to change the flag. This ritual has been followed since the time the temple has been built. There is a belief that if this ritual is missed even for one day the temple shuts down for 18 years. Also, there are no shadows of the temple to be seen during any time of the day. There are many astonishing facts about this temple.\n\nLocation: Bhanumati Way, Puri, Odisha 752002\nHighlights: The temple does not create a shadow during the daytime. You cannot hear the sound of the waves of the ocean when you are inside the temple.\nTiming: 5 am – 11 pm",
   "category": "temple",
-  "rating": "3.5427313957235063",
+  "rating": "4.9427313957235063",
   "city": "puri",
   "latitude": 19.80482,
   "longitude": 85.817919
