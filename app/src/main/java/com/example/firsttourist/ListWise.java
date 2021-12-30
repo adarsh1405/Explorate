@@ -37,6 +37,8 @@ import java.io.InputStream;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.TreeMap;
 
 public class ListWise extends AppCompatActivity {
     ListView lv;
@@ -132,16 +134,47 @@ public class ListWise extends AppCompatActivity {
             mrating = new float[len];
             mdist = new String[len];
 
-            for(int i=0;i<name.size();i++)
+
+            //sort the array based on the nearest distance
+            TreeMap<Double , ArrayList<String>> tm = new TreeMap<Double,ArrayList<String>>();
+
+            for(int i=0;i<len;i++)
             {
-                mTitle[i] = name.get(i);
-                mlocation[i]=location.get(i);
-                mDescription[i]=description.get(i);
-                mcity[i]=city.get(i);
-                mrating[i]  = Float.parseFloat(rating.get(i));
-                images_url[i]=url.get(i);
-                mdist[i] = dist.get(i);
+                ArrayList<String> arr = new ArrayList<String>();
+                    arr.add(name.get(i));
+                    arr.add(location.get(i));
+                    arr.add(url.get(i));
+                    arr.add(rating.get(i));
+                    arr.add(city.get(i));
+                    arr.add(description.get(i));
+                tm.put(Double.parseDouble(dist.get(i)),arr);
             }
+            int count=0;
+            for(Double key : tm.keySet()) {
+                ArrayList<String> so =new ArrayList<String>(tm.get(key));
+                mTitle[count] = so.get(0);
+                mlocation[count]=so.get(1);
+                images_url[count]=so.get(2);
+                mrating[count]  = Float.parseFloat(so.get(3));
+                mcity[count]=so.get(4);
+                mDescription[count]=so.get(5);
+                mdist[count] = Double.toString(key);
+                count++;
+            }
+
+//            for(int i=0;i<name.size();i++)
+//            {
+//                mTitle[i] = name.get(i);
+//                mlocation[i]=location.get(i);
+//                mDescription[i]=description.get(i);
+//                mcity[i]=city.get(i);
+//                mrating[i]  = Float.parseFloat(rating.get(i));
+//                images_url[i]=url.get(i);
+//                mdist[i] = dist.get(i);
+//            }
+
+
+
             MyAdapter adapter = new MyAdapter(this, mTitle,mlocation,images_url, mrating,mdist);
             lv.setAdapter(adapter);
             lv.setClickable(true);
@@ -219,6 +252,7 @@ public class ListWise extends AppCompatActivity {
             mrating = new float[len];
             mdist = new String[len];
 
+            //not done sorting
             for(int i=0;i<name.size();i++)
             {
                 mTitle[i] = name.get(i);
@@ -306,15 +340,31 @@ public class ListWise extends AppCompatActivity {
             mrating = new float[len];
             mdist = new String[len];
 
-            for(int i=0;i<name.size();i++)
+            //sort the array based on the nearest distance
+            TreeMap<Double , ArrayList<String>> tm = new TreeMap<Double,ArrayList<String>>();
+
+            for(int i=0;i<len;i++)
             {
-                mTitle[i] = name.get(i);
-                mlocation[i]=location.get(i);
-                mDescription[i]=description.get(i);
-                mcity[i]=city.get(i);
-                mrating[i]  = Float.parseFloat(rating.get(i));
-                images_url[i]=url.get(i);
-                mdist[i] = dist.get(i);
+                ArrayList<String> arr = new ArrayList<String>();
+                arr.add(name.get(i));
+                arr.add(location.get(i));
+                arr.add(url.get(i));
+                arr.add(rating.get(i));
+                arr.add(city.get(i));
+                arr.add(description.get(i));
+                tm.put(Double.parseDouble(dist.get(i)),arr);
+            }
+            int count=0;
+            for(Double key : tm.keySet()) {
+                ArrayList<String> so =new ArrayList<String>(tm.get(key));
+                mTitle[count] = so.get(0);
+                mlocation[count]=so.get(1);
+                images_url[count]=so.get(2);
+                mrating[count]  = Float.parseFloat(so.get(3));
+                mcity[count]=so.get(4);
+                mDescription[count]=so.get(5);
+                mdist[count] = Double.toString(key);
+                count++;
             }
             MyAdapter adapter = new MyAdapter(this, mTitle,mlocation,images_url, mrating,mdist);
             lv.setAdapter(adapter);
@@ -393,15 +443,31 @@ public class ListWise extends AppCompatActivity {
             mrating = new float[len];
             mdist = new String[len];
 
-            for(int i=0;i<name.size();i++)
+            //sort the array based on the nearest distance
+            TreeMap<Double , ArrayList<String>> tm = new TreeMap<Double,ArrayList<String>>();
+
+            for(int i=0;i<len;i++)
             {
-                mTitle[i] = name.get(i);
-                mlocation[i]=location.get(i);
-                mDescription[i]=description.get(i);
-                mcity[i]=city.get(i);
-                mrating[i]  = Float.parseFloat(rating.get(i));
-                images_url[i]=url.get(i);
-                mdist[i] = dist.get(i);
+                ArrayList<String> arr = new ArrayList<String>();
+                arr.add(name.get(i));
+                arr.add(location.get(i));
+                arr.add(url.get(i));
+                arr.add(rating.get(i));
+                arr.add(city.get(i));
+                arr.add(description.get(i));
+                tm.put(Double.parseDouble(dist.get(i)),arr);
+            }
+            int count=0;
+            for(Double key : tm.keySet()) {
+                ArrayList<String> so =new ArrayList<String>(tm.get(key));
+                mTitle[count] = so.get(0);
+                mlocation[count]=so.get(1);
+                images_url[count]=so.get(2);
+                mrating[count]  = Float.parseFloat(so.get(3));
+                mcity[count]=so.get(4);
+                mDescription[count]=so.get(5);
+                mdist[count] = Double.toString(key);
+                count++;
             }
             MyAdapter adapter = new MyAdapter(this, mTitle,mlocation,images_url, mrating,mdist);
             lv.setAdapter(adapter);
@@ -480,6 +546,7 @@ public class ListWise extends AppCompatActivity {
             mrating = new float[len];
             mdist = new String[len];
 
+            //not done sorting
             for(int i=0;i<name.size();i++)
             {
                 mTitle[i] = name.get(i);
@@ -567,15 +634,31 @@ public class ListWise extends AppCompatActivity {
             mrating = new float[len];
             mdist = new String[len];
 
-            for(int i=0;i<name.size();i++)
+            //sort the array based on the nearest distance
+            TreeMap<Double , ArrayList<String>> tm = new TreeMap<Double,ArrayList<String>>();
+
+            for(int i=0;i<len;i++)
             {
-                mTitle[i] = name.get(i);
-                mlocation[i]=location.get(i);
-                mDescription[i]=description.get(i);
-                mcity[i]=city.get(i);
-                mrating[i]  = Float.parseFloat(rating.get(i));
-                images_url[i]=url.get(i);
-                mdist[i] = dist.get(i);
+                ArrayList<String> arr = new ArrayList<String>();
+                arr.add(name.get(i));
+                arr.add(location.get(i));
+                arr.add(url.get(i));
+                arr.add(rating.get(i));
+                arr.add(city.get(i));
+                arr.add(description.get(i));
+                tm.put(Double.parseDouble(dist.get(i)),arr);
+            }
+            int count=0;
+            for(Double key : tm.keySet()) {
+                ArrayList<String> so =new ArrayList<String>(tm.get(key));
+                mTitle[count] = so.get(0);
+                mlocation[count]=so.get(1);
+                images_url[count]=so.get(2);
+                mrating[count]  = Float.parseFloat(so.get(3));
+                mcity[count]=so.get(4);
+                mDescription[count]=so.get(5);
+                mdist[count] = Double.toString(key);
+                count++;
             }
             MyAdapter adapter = new MyAdapter(this, mTitle,mlocation,images_url, mrating,mdist);
             lv.setAdapter(adapter);
@@ -620,6 +703,24 @@ public class ListWise extends AppCompatActivity {
                         location.add(obj.getString("location"));
                         city.add(obj.getString("city"));
                         rating.add(obj.getString("rating"));
+
+                        d_lat = Double.parseDouble(obj.getString("latitude"));
+                        d_lon = Double.parseDouble(obj.getString("longitude"));
+
+                        double lon1 = Math.toRadians(i_lon);
+                        double lon2 = Math.toRadians(d_lon);
+                        double lat1 = Math.toRadians(i_lat);
+                        double lat2 = Math.toRadians(d_lat);
+                        // Haversine formula
+                        double dlon = lon2 - lon1;
+                        double dlat = lat2 - lat1;
+                        double a = Math.pow(Math.sin(dlat / 2), 2)
+                                + Math.cos(lat1) * Math.cos(lat2)
+                                * Math.pow(Math.sin(dlon / 2),2);
+                        double c = 2 * Math.asin(Math.sqrt(a));
+                        double r = 6371;
+                        double res=c*r;
+                        dist.add(df.format(res));
                     }
                 }
             } catch (IOException e) {
@@ -634,21 +735,37 @@ public class ListWise extends AppCompatActivity {
             images_url = new String[len];
             mcity = new String[len];
             mrating = new float[len];
+            mdist = new String[len];
 
-            for(int i=0;i<name.size();i++)
+            //sort the array based on the nearest distance
+            TreeMap<Double , ArrayList<String>> tm = new TreeMap<Double,ArrayList<String>>();
+
+            for(int i=0;i<len;i++)
             {
-                mTitle[i] = name.get(i);
-                mlocation[i]=location.get(i);
-                mDescription[i]=description.get(i);
-                mcity[i]=city.get(i);
-                mrating[i]  = Float.parseFloat(rating.get(i));
-                images_url[i]=url.get(i);
+                ArrayList<String> arr = new ArrayList<String>();
+                arr.add(name.get(i));
+                arr.add(location.get(i));
+                arr.add(url.get(i));
+                arr.add(rating.get(i));
+                arr.add(city.get(i));
+                arr.add(description.get(i));
+                tm.put(Double.parseDouble(dist.get(i)),arr);
             }
-
+            int count=0;
+            for(Double key : tm.keySet()) {
+                ArrayList<String> so =new ArrayList<String>(tm.get(key));
+                mTitle[count] = so.get(0);
+                mlocation[count]=so.get(1);
+                images_url[count]=so.get(2);
+                mrating[count]  = Float.parseFloat(so.get(3));
+                mcity[count]=so.get(4);
+                mDescription[count]=so.get(5);
+                mdist[count] = Double.toString(key);
+                count++;
+            }
             MyAdapter adapter = new MyAdapter(this, mTitle,mlocation,images_url, mrating,mdist);
             lv.setAdapter(adapter);
             lv.setClickable(true);
-
             lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -659,9 +776,8 @@ public class ListWise extends AppCompatActivity {
                     intent.putExtra("Image", images_url[position]);
                     intent.putExtra("city", mcity[position]);
                     intent.putExtra("rating",Float.toString(mrating[position]));
+                    intent.putExtra("dist",mdist[position]);
                     startActivity(intent);
-
-
                 }
             });
         }
@@ -684,6 +800,8 @@ public class ListWise extends AppCompatActivity {
             this.ra=r;
             this.rDist=dist;
         }
+
+
         @NonNull
         @Override
         public View getView(int position, @NonNull View convertView, @NonNull ViewGroup parent){
@@ -694,6 +812,10 @@ public class ListWise extends AppCompatActivity {
             TextView myDescription = row.findViewById(R.id.textview2);
             TextView mDistance = row.findViewById(R.id.dist);
             RatingBar rb=row.findViewById(R.id.ratingBar);
+
+
+
+
             Glide.with(row)
                     .load(rImgs[position])
                     .placeholder(R.drawable.ic_launcher_foreground)
